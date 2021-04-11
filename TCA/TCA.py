@@ -145,11 +145,3 @@ if __name__ == '__main__':
     # auc_tar2 = roc_auc_score(Yt2,pred_tar2)
     # print(f'AUC of mapped source and target1 data : {auc_tar1:.3f}') 
     # print(f'AUC of mapped target2 data            : {auc_tar2:.3f}') 
-
-forPinv = self.mu * np.identity(n_source + n_target) + np.dot(np.dot(K, L), K)
-forPinv[np.isnan(forPinv)] = 0
-# 计算(K*L*K+mu*I)^-1 * (K*H*K)
-Kc = np.dot(np.dot(np.dot(np.linalg.pinv(forPinv), K), H), K)
-Kc[np.isnan(Kc)] = 0
-# 对核技巧映射后的矩阵求特征值
-w, V = np.linalg.eig(Kc) # 返回特征值与特征向量
